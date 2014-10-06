@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jensechu/ito.svg?branch=master)](https://travis-ci.org/jensechu/ito)
+
 ito
 ===
 

@@ -4,9 +4,9 @@ var assert = require('assert');
 var path   = require('path');
 var ito    = require(path.join(__dirname, '..', 'ito.js'));
 
-describe('header', function() {
+describe('._formatHeader', function() {
   it('should return a formatted header', function() {
-    var header         = ito.header('Header');
+    var header         = ito._formatHeader('Header');
     var expectedHeader = 'Header' + '\n' +
                          '======';
 
@@ -14,23 +14,23 @@ describe('header', function() {
   })
 });
 
-describe('subHeader', function() {
+describe('._formatSubHeader', function() {
   it('should return a formatted subheader', function() {
-    var subHeader         = ito.subHeader('Subheader');
+    var subHeader         = ito._formatSubHeader('Subheader');
     var expectedSubHeader = 'SUBHEADER';
 
     assert.strictEqual(subHeader, expectedSubHeader, 'Subheader formatted.');
   })
 });
 
-describe('tableOfContents', function() {
+describe('._formatNumberedList', function() {
   it('should return a formatted table of contents', function() {
-    var tableOfContents         = ito.tableOfContents(['Dragons', 'Puppies', 'Kittens', 'Pokemanz']);
-    var expectedTableOfContents = '1. Dragons' + '\n' +
-                                  '2. Puppies' + '\n' +
-                                  '3. Kittens' + '\n' +
-                                  '4. Pokemanz';
+    var numberedList         = ito._formatNumberedList(['Dragons', 'Puppies', 'Kittens', 'Pokemanz']);
+    var expectedNumberedList = '1. Dragons' + '\n' +
+                               '2. Puppies' + '\n' +
+                               '3. Kittens' + '\n' +
+                               '4. Pokemanz';
 
-    assert.strictEqual(tableOfContents, expectedTableOfContents, 'Table of Contents formatted.');
+    assert.strictEqual(numberedList, expectedNumberedList, 'Numbered List formatted.');
   })
 });

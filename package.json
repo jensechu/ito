@@ -1,0 +1,27 @@
+{
+  "name": "ito",
+  "version": "0.0.1",
+  "description": "String formatter for the purpose of printing pretty logs.",
+  "main": "ito.js",
+  "scripts": {
+    "test": "mocha tests/test-ito.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jensechu/ito.git"
+  },
+  "keywords": [
+    "string",
+    "format",
+    "tessel"
+  ],
+  "dependencies": {
+    "mocha": "~1.21.4"
+  },
+  "author": "Jensen H",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jensechu/ito/issues"
+  },
+  "homepage": "https://github.com/jensechu/ito"
+}

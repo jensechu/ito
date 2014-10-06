@@ -16,13 +16,11 @@ var ito = {
   },
 
   tableOfContents: function(contents) {
-    for(var i=0; i<contents.length; i++) {
-      var tableNumber = (i + 1) + '. ' ;
-
-      contents[i] = tableNumber + contents[i];
-    };
-
-    var formattedTableOfContents = contents.join('\n');
+    var tableRows = contents.map(function (row, i) {
+      var rowNumber = (i + 1) + '. ';
+      return rowNumber + row;
+    });
+    var formattedTableOfContents = tableRows.join('\n');
 
     return formattedTableOfContents;
   }

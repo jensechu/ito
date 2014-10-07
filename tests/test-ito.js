@@ -10,7 +10,7 @@ describe('._formatHeader', function() {
     var expectedHeader = 'Header' + '\n' +
                          '======';
 
-    assert.strictEqual(header, expectedHeader, 'Header formatted.');
+    assert.strictEqual(header, expectedHeader, 'Header was not properly formatted');
   })
 });
 
@@ -19,7 +19,7 @@ describe('._formatSubHeader', function() {
     var subHeader         = ito._formatSubHeader('Subheader');
     var expectedSubHeader = 'SUBHEADER';
 
-    assert.strictEqual(subHeader, expectedSubHeader, 'Subheader formatted.');
+    assert.strictEqual(subHeader, expectedSubHeader, 'Subheader was not properly formatted.');
   })
 });
 
@@ -31,7 +31,7 @@ describe('._formatNumberedList', function() {
                                '3. Kittens' + '\n' +
                                '4. Pokemanz';
 
-    assert.strictEqual(numberedList, expectedNumberedList, 'Numbered List formatted.');
+    assert.strictEqual(numberedList, expectedNumberedList, 'Numbered List was not properly formatted.');
   })
 });
 
@@ -43,6 +43,28 @@ describe('._formatBulletList', function() {
                              '\u2022 Kittens' + '\n' +
                              '\u2022 Pokemanz';
 
-    assert.strictEqual(bulletList, expectedBulletList, 'Bullet List formatted.');
+    assert.strictEqual(bulletList, expectedBulletList, 'Bullet List was not properly formatted.');
   })
+});
+
+describe('._formatCustomList', function() {
+  it('should return a formatted list with heart bullets', function() {
+    var heartList         = ito._formatCustomList('\u2665', ['Dragons', 'Puppies', 'Kittens', 'Pokemanz']);
+    var expectedHeartList = '\u2665 Dragons' + '\n' +
+                            '\u2665 Puppies' + '\n' +
+                            '\u2665 Kittens' + '\n' +
+                            '\u2665 Pokemanz';
+
+    assert.strictEqual(heartList, expectedHeartList, 'Custom Heart List was not properly formatted.');
+  });
+
+  it('should return a formatted list with star bullets', function() {
+    var starList         = ito._formatCustomList('\u2605', ['Dragons', 'Puppies', 'Kittens', 'Pokemanz']);
+    var expectedStarList = '\u2605 Dragons' + '\n' +
+                           '\u2605 Puppies' + '\n' +
+                           '\u2605 Kittens' + '\n' +
+                           '\u2605 Pokemanz';
+
+    assert.strictEqual(starList, expectedStarList, 'Custom Star List was not properly formatted.');
+  });
 });

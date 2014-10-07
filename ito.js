@@ -34,6 +34,17 @@ var ito = {
     var formattedBulletList = tableRows.join('\n');
 
     return formattedBulletList;
+  },
+
+  _formatCustomList: function(listType, contents) {
+    var tableRows = contents.map(function(row) {
+      return listType + ' ' + row;
+    });
+
+    var formattedCustomList = tableRows.join('\n');
+
+    return formattedCustomList;
+
   }
 };
 

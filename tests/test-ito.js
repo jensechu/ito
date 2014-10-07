@@ -24,7 +24,7 @@ describe('._formatSubHeader', function() {
 });
 
 describe('._formatNumberedList', function() {
-  it('should return a formatted table of contents', function() {
+  it('should return a formatted numbered list', function() {
     var numberedList         = ito._formatNumberedList(['Dragons', 'Puppies', 'Kittens', 'Pokemanz']);
     var expectedNumberedList = '1. Dragons' + '\n' +
                                '2. Puppies' + '\n' +
@@ -32,5 +32,17 @@ describe('._formatNumberedList', function() {
                                '4. Pokemanz';
 
     assert.strictEqual(numberedList, expectedNumberedList, 'Numbered List formatted.');
+  })
+});
+
+describe('._formatBulletList', function() {
+  it('should return a formatted bullet list', function() {
+    var bulletList         = ito._formatBulletList(['Dragons', 'Puppies', 'Kittens', 'Pokemanz']);
+    var expectedBulletList = '\u2022 Dragons' + '\n' +
+                             '\u2022 Puppies' + '\n' +
+                             '\u2022 Kittens' + '\n' +
+                             '\u2022 Pokemanz';
+
+    assert.strictEqual(bulletList, expectedBulletList, 'Bullet List formatted.');
   })
 });

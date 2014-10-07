@@ -1,6 +1,7 @@
 'use strict';
 
 var ito = {
+
   _formatHeader: function(header) {
     var headerBorder    = new Array(header.length + 1).join('=');
     var formattedHeader = header + '\n' +
@@ -47,7 +48,7 @@ var ito = {
 
   },
 
-  _formatDivider: function(dividerType) {
+  _formatDivider: function() {
     var dividerLength    = 30;
     var dividerBars      = new Array(dividerLength + 1).join('=');
     var formattedDivider = '\n //' + dividerBars + ' \n';
@@ -61,6 +62,34 @@ var ito = {
     var formattedCustomDivider = '\n //' + dividerBars + dividerType + ' \n';
 
     return formattedCustomDivider;
+  },
+
+  header: function(header) {
+    console.log(ito._formatHeader(header));
+  },
+
+  subheader: function(subheader) {
+    console.log(ito._formatSubHeader(subheader));
+  },
+
+  numberedList: function(contents) {
+    console.log(ito._formatNumberedList(contents));
+  },
+
+  bulletList: function(contents) {
+    console.log(ito._formatBulletList(contents));
+  },
+
+  customList: function(listType, contents) {
+    console.log(ito._formatCustomList(listType, contents));
+  },
+
+  divider: function() {
+    console.log(ito._formatDivider());
+  },
+
+  customDivider: function(dividerType) {
+    console.log(ito._formatCustomDivider(dividerType));
   }
 };
 

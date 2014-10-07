@@ -48,11 +48,19 @@ var ito = {
   },
 
   _formatDivider: function(dividerType) {
-    return '\n //============================== \n';
+    var dividerLength    = 30;
+    var dividerBars      = new Array(dividerLength + 1).join('=');
+    var formattedDivider = '\n //' + dividerBars + ' \n';
+
+    return formattedDivider;
   },
 
   _formatCustomDivider: function(dividerType) {
-    return '\n //=============================' + dividerType + ' \n';
+    var dividerLength    = 30 - dividerType.length;
+    var dividerBars      = new Array(dividerLength + 1).join('=');
+    var formattedCustomDivider = '\n //' + dividerBars + dividerType + ' \n';
+
+    return formattedCustomDivider;
   }
 };
 

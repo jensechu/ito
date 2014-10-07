@@ -20,9 +20,20 @@ var ito = {
       var rowNumber = (i + 1) + '. ';
       return rowNumber + row;
     });
+
     var formattedNumberedList = tableRows.join('\n');
 
     return formattedNumberedList;
+  },
+
+  _formatBulletList: function(contents) {
+    var tableRows = contents.map(function(row) {
+      return '\u2022 ' + row;
+    });
+
+    var formattedBulletList = tableRows.join('\n');
+
+    return formattedBulletList;
   }
 };
 

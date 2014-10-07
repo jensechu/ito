@@ -68,3 +68,28 @@ describe('._formatCustomList', function() {
     assert.strictEqual(starList, expectedStarList, 'Custom Star List was not properly formatted.');
   });
 });
+
+describe('._formatDivider', function() {
+  it('should return a formatted divider', function() {
+    var divider         = ito._formatDivider();
+    var expectedDivider = '\n //============================== \n';
+
+    assert.strictEqual(divider, expectedDivider, 'Divider was not properly formatted.');
+  });
+});
+
+describe('._formatCustomDivider', function() {
+  it('should return a formatted divider with a heart', function() {
+    var heartDivider         = ito._formatCustomDivider('\u2665');
+    var expectedHeartDivider = '\n //=============================\u2665 \n';
+
+    assert.strictEqual(heartDivider, expectedHeartDivider, 'Heart Divider was not properly formatted.');
+  });
+
+  it('should return a formatted divider with a star', function() {
+    var starDivider         = ito._formatCustomDivider('\u2605');
+    var expectedStarDivider = '\n //=============================\u2605 \n';
+
+    assert.strictEqual(starDivider, expectedStarDivider, 'Star Divider was not properly formatted.');
+  });
+});

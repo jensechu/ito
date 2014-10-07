@@ -45,6 +45,14 @@ var ito = {
 
     return formattedCustomList;
 
+  },
+
+  _formatDivider: function(dividerType) {
+    return '\n //============================== \n';
+  },
+
+  _formatCustomDivider: function(dividerType) {
+    return '\n //=============================' + dividerType + ' \n';
   }
 };
 

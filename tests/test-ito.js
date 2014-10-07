@@ -87,9 +87,16 @@ describe('._formatCustomDivider', function() {
   });
 
   it('should return a formatted divider with a star', function() {
-    var starDivider         = ito._formatCustomDivider('\u2605');
-    var expectedStarDivider = '\n //=============================\u2605 \n';
+    var starDivider         = ito._formatCustomDivider('\u2605\u2605');
+    var expectedStarDivider = '\n //============================\u2605\u2605 \n';
 
     assert.strictEqual(starDivider, expectedStarDivider, 'Star Divider was not properly formatted.');
+  });
+
+  it('should return a formatted divider with a string "loading modules"', function() {
+    var stringDivider         = ito._formatCustomDivider('loading modules');
+    var expectedStringDivider = '\n //===============loading modules \n';
+
+    assert.strictEqual(stringDivider, expectedStringDivider, 'String Divider was not properly formatted.');
   });
 });

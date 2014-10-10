@@ -16,6 +16,16 @@ var ito = {
     return formattedSubheader;
   },
 
+    _formatList: function(contents) {
+      var tableRows = contents.map(function(row) {
+        return '\u2022 ' + row;
+      });
+
+      var formattedList = tableRows.join('\n');
+
+      return formattedList;
+    },
+
   _formatNumberedList: function(contents) {
     var tableRows = contents.map(function (row, i) {
       var rowNumber = (i + 1) + '. ';
@@ -25,16 +35,6 @@ var ito = {
     var formattedNumberedList = tableRows.join('\n');
 
     return formattedNumberedList;
-  },
-
-  _formatBulletList: function(contents) {
-    var tableRows = contents.map(function(row) {
-      return '\u2022 ' + row;
-    });
-
-    var formattedBulletList = tableRows.join('\n');
-
-    return formattedBulletList;
   },
 
   _formatCustomList: function(listType, contents) {
@@ -72,12 +72,12 @@ var ito = {
     console.log(ito._formatSubHeader(subheader));
   },
 
-  numberedList: function(contents) {
-    console.log(ito._formatNumberedList(contents));
+  list: function(contents) {
+    console.log(ito._formatList(contents));
   },
 
-  bulletList: function(contents) {
-    console.log(ito._formatBulletList(contents));
+  numberedList: function(contents) {
+    console.log(ito._formatNumberedList(contents));
   },
 
   customList: function(listType, contents) {

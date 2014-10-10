@@ -24,6 +24,18 @@ describe('ito', function() {
     })
   });
 
+  describe('._formatList', function() {
+    it('should return a formatted bullet list', function() {
+      var list         = ito._formatList(['Dragons', 'Puppies', 'Kittens', 'Pokemanz']);
+      var expectedList = '\u2022 Dragons' + '\n' +
+                               '\u2022 Puppies' + '\n' +
+                               '\u2022 Kittens' + '\n' +
+                               '\u2022 Pokemanz';
+
+      assert.strictEqual(list, expectedList, 'List was not properly formatted.');
+    })
+  });
+
   describe('._formatNumberedList', function() {
     it('should return a formatted numbered list', function() {
       var numberedList         = ito._formatNumberedList(['Dragons', 'Puppies', 'Kittens', 'Pokemanz']);
@@ -33,18 +45,6 @@ describe('ito', function() {
                                  '4. Pokemanz';
 
       assert.strictEqual(numberedList, expectedNumberedList, 'Numbered List was not properly formatted.');
-    })
-  });
-
-  describe('._formatBulletList', function() {
-    it('should return a formatted bullet list', function() {
-      var bulletList         = ito._formatBulletList(['Dragons', 'Puppies', 'Kittens', 'Pokemanz']);
-      var expectedBulletList = '\u2022 Dragons' + '\n' +
-                               '\u2022 Puppies' + '\n' +
-                               '\u2022 Kittens' + '\n' +
-                               '\u2022 Pokemanz';
-
-      assert.strictEqual(bulletList, expectedBulletList, 'Bullet List was not properly formatted.');
     })
   });
 

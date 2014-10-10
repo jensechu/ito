@@ -26,6 +26,19 @@ ito.subheader('Studying The Cutest');
 
 ```
 
+### List
+Logs a bulleted list given an array.
+
+```
+ito.list(['houndour', 'vulpix', 'eevee', 'mew']);
+
+> • Houndour
+> • Vulpix
+> • Eevee
+> • Mew
+
+```
+
 ### Numbered List
 Logs a numbered list given an array.
 
@@ -36,19 +49,6 @@ ito.numberedList(['houndour', 'vulpix', 'eevee', 'mew']);
 > 2. Vulpix
 > 3. Eevee
 > 4. Mew
-
-```
-
-### Bullet List
-Logs a bulleted list given an array.
-
-```
-ito.bulletList(['houndour', 'vulpix', 'eevee', 'mew']);
-
-> • Houndour
-> • Vulpix
-> • Eevee
-> • Mew
 
 ```
 

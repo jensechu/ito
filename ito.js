@@ -1,96 +1,92 @@
 'use strict';
 
-var ito = {
+(function(module) {
 
-  _formatHeader: function(header) {
-    var headerBorder    = new Array(header.length + 1).join('=');
-    var formattedHeader = header + '\n' +
-                          headerBorder;
+  var config = {
+    divider: {
+      length: 30,
+      symbol: '=',
+    },
+    list: {
+      bullet: '\u2022'
+    },
+    out: console.log,
+  };
 
-    return formattedHeader;
-  },
+  var bar = function(len) {
+    return new Array(len).join(config.divider.symbol);
+  }
 
-  _formatSubHeader: function(subheader) {
-    var formattedSubheader = subheader.toUpperCase();
+  var format = {
+    divider: function(text) {
+      if (text == undefined) {
+        text = ''
+      }
 
-    return formattedSubheader;
-  },
-
-    _formatList: function(contents) {
-      var tableRows = contents.map(function(row) {
-        return '\u2022 ' + row;
-      });
-
-      var formattedList = tableRows.join('\n');
-
-      return formattedList;
+      var len = config.divider.length - text.length + 1;
+      return '\n //' + bar(len) + text + ' \n';
     },
 
-  _formatNumberedList: function(contents) {
-    var tableRows = contents.map(function (row, i) {
-      var rowNumber = (i + 1) + '. ';
-      return rowNumber + row;
-    });
+    header: function(header) {
+      return header + '\n' + bar(header.length + 1);
+    },
 
-    var formattedNumberedList = tableRows.join('\n');
+    list: function(bullet, contents) {
+      if (typeof bullet !== 'string') {
+        contents = bullet;
+        bullet   = config.list.bullet;
+      }
 
-    return formattedNumberedList;
-  },
+      var rows = contents.map(function(row) {
+        return bullet + ' ' + row;
+      });
+      return rows.join('\n');
+    },
 
-  _formatCustomList: function(listType, contents) {
-    var tableRows = contents.map(function(row) {
-      return listType + ' ' + row;
-    });
+    numberedList:  function(contents) {
+      var rows = contents.map(function (row, i) {
+        return (i + 1) + '. ' + row;
+      });
 
-    var formattedCustomList = tableRows.join('\n');
+      return rows.join('\n');
+    },
 
-    return formattedCustomList;
+    subHeader: function(subheader) {
+      return subheader.toUpperCase();
+    }
+  };
 
-  },
+  var ito = {
+    config: config,
 
-  _formatDivider: function() {
-    var dividerLength    = 30;
-    var dividerBars      = new Array(dividerLength + 1).join('=');
-    var formattedDivider = '\n //' + dividerBars + ' \n';
+    customDivider: function(label) {
+      config.out(format.divider(label));
+    },
 
-    return formattedDivider;
-  },
+    customList: function(bullet, contents) {
+      config.out(format.list(bullet, contents));
+    },
 
-  _formatCustomDivider: function(dividerType) {
-    var dividerLength    = 30 - dividerType.length;
-    var dividerBars      = new Array(dividerLength + 1).join('=');
-    var formattedCustomDivider = '\n //' + dividerBars + dividerType + ' \n';
+    divider: function() {
+      config.out(format.divider());
+    },
 
-    return formattedCustomDivider;
-  },
+    header: function(header) {
+      config.out(format.header(header));
+    },
 
-  header: function(header) {
-    console.log(ito._formatHeader(header));
-  },
+    list: function(contents) {
+      config.out(format.list(contents));
+    },
 
-  subheader: function(subheader) {
-    console.log(ito._formatSubHeader(subheader));
-  },
+    numberedList: function(contents) {
+      config.out(format.numberedList(contents));
+    },
 
-  list: function(contents) {
-    console.log(ito._formatList(contents));
-  },
+    subHeader: function(subheader) {
+      config.out(format.subHeader(subheader));
+    }
+  };
 
-  numberedList: function(contents) {
-    console.log(ito._formatNumberedList(contents));
-  },
-
-  customList: function(listType, contents) {
-    console.log(ito._formatCustomList(listType, contents));
-  },
-
-  divider: function() {
-    console.log(ito._formatDivider());
-  },
-
-  customDivider: function(dividerType) {
-    console.log(ito._formatCustomDivider(dividerType));
-  }
-};
-
-module.exports = ito;
+  module.exports = ito;
+})(module);
